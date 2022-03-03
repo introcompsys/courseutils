@@ -24,4 +24,4 @@ You may need to use pip3 instead of pip
 
 This is a command line tool.
 
-use `kwlfilecheck` to get the list of files from that should be in the kwl repo. 
+use `kwlfilecheck` to get the list of files from that should be in the kwl repo.

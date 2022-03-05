@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     py_modules=['kwltracking'],
     install_requires=[
-        'Click', 'pandas'
+        'Click', 'pandas', 'lxml'
     ],
     entry_points={
         'console_scripts': [

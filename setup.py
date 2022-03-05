@@ -5,12 +5,11 @@ setup(
     version='0.1.0',
     py_modules=['kwltracking'],
     install_requires=[
-        'Click', 'pandas', 'lxml'
+        'Click', 'pandas'
     ],
     entry_points={
         'console_scripts': [
             'kwlfilecheck = kwltracking:get_file_list',
-            'kwlgetfilelist = kwltracking:get_file_list',
         ],
     },
 )

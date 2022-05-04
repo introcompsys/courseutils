@@ -10,6 +10,7 @@ setup(
     entry_points={
         'console_scripts': [
             'kwlfilecheck = kwltracking:get_file_list',
+            'kwlfilecount = kwltracking:count_files',
         ],
     },
 )

@@ -26,6 +26,8 @@ On Windows, use GitBash for the clone and then Anaconda Prompt for install
 
 This is a command line tool. It works in Bash on MacOS and Linus and Anaconda Prompt on Windows.
 
+## Get the list for use in a bash script
+
 use `kwlfilecheck` to get the list of files from that should be in the kwl repo.
 
 Usage: kwlfilecheck [OPTIONS]
@@ -33,17 +35,18 @@ Usage: kwlfilecheck [OPTIONS]
   scrape the list, filter and echo back
 
 Options:
-  --practice   flag formore practice related files or not
-  --zone TEXT
-  --help       Show this message and exit.
+-  `--practice`   flag formore practice related files or not
+-  `--zone TEXT`
+-  `--help`       Show this message and exit.
 
 
+## File Counter by date
 
 use `kwlfilecount` to check the dates that are/not complete
 
 Usage: kwlfilecount [OPTIONS]
 
 Options:
-  --practice   flag formore practice related files or not
-  --zone TEXT
-  --help       Show this message and exit.
+- `--practice`   flag formore practice related files or not
+-  `--zone TEXT`
+-  `--help`       Show this message and exit.

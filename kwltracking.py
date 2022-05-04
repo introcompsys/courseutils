@@ -32,16 +32,15 @@ def filter_files(df,zone, types):
 
 
 @click.command()
-@click.option('--practice', default=False, is_flag=False,
+@click.option('--practice', default=False, is_flag=True,
                 help='flag formore practice related files or not')
 @click.option('--zone', default='graded')
 
-def count_files(zone='graded',prepare =True, practice =False):
-    types = []
-    if prepare:
-        types.append('prepare')
+def count_files(zone='graded',practice =False):
+
+    types = ['prepare']
     if practice:
-        types.append('pracitce')
+        types.append('practice')
 
     # click.echo('in program')
     df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]
@@ -56,7 +55,7 @@ def count_files(zone='graded',prepare =True, practice =False):
     complete_count = 0
     for date, ddf in df_filt.groupby('date'):
         date_set = set(ddf['file'].to_list())
-        if cur_files - date_set:
+        if date_set-cur_files:
             incomplete_dates.append(date)
         else:
             complete_count +=1

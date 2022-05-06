@@ -69,7 +69,7 @@ def count_files(zone='graded',practice =False):
 @click.command()
 
 def count_extra_files():
-    jb_files = ['_toc.yml','_config.yml']
+    jb_files = ['_toc.yml','_config.yml','requirements.txt']
 
     # click.echo('in program')
     df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]

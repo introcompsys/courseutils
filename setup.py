@@ -5,12 +5,14 @@ setup(
     version='0.1.0',
     py_modules=['kwltracking'],
     install_requires=[
-        'Click', 'pandas', 'lxml'
+        'Click', 'pandas', 'lxml', 'numpy'
     ],
     entry_points={
         'console_scripts': [
             'kwlfilecheck = kwltracking:get_file_list',
             'kwlfilecount = kwltracking:count_files',
+            'kwlextracount = kwltracking:count_extra_files',
+
         ],
     },
 )

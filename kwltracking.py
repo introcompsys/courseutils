@@ -37,7 +37,6 @@ def filter_files(df,zone, types):
 @click.option('--zone', default='graded')
 
 def count_files(zone='graded',practice =False):
-
     types = ['prepare']
     if practice:
         types.append('practice')
@@ -67,3 +66,19 @@ def count_files(zone='graded',practice =False):
 
 
     # count unique dates
+@click.command()
+
+def count_extra_files():
+    jb_files = ['_toc.yml','_config.yml']
+
+    # click.echo('in program')
+    df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]
+    expected_files = set(df['file'].to_list() + jb_files)
+
+    # get files in the current directory and subfodlers, but not git
+    cur_files = set([f for cd,d,fn in os.walk('.') for f in fn if not('.git' in cd)])
+
+    # do a set differences
+    extra_files = cur_files - expected_files
+
+    click.echo(' '.join(extra_files))

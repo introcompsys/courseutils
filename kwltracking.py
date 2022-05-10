@@ -51,16 +51,24 @@ def count_files(zone='graded',practice =False):
     # filter by current files
     # check the whole file table for each present file, then sum and bool by taking all nonzero
     incomplete_dates = []
+    missing_by_date = {}
     complete_count = 0
     for date, ddf in df_filt.groupby('date'):
         date_set = set(ddf['file'].to_list())
-        if date_set-cur_files:
+        missing = date_set-cur_files
+        if missing:
             incomplete_dates.append(date)
+            missing_by_date[date] = ' '.join(list(missing))
         else:
             complete_count +=1
 
+
     click.echo(str(complete_count)+ ' dates complete')
+    click.echo('-----------------------------------')
     click.echo('dates missing 1 or more files: ' + ' '.join(incomplete_dates))
+    click.echo('-----------------------------------')
+    click.echo('\n'.join([' : '.join([d,l]) for d,l in missing_by_date.items()]))
+
 
 
 

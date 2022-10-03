@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='syscourseutils',
     version='0.1.0',
-    py_modules=['kwltracking'],
+    py_modules=['kwltracking','tasktracking'],
     install_requires=[
         'Click', 'pandas', 'lxml', 'numpy'
     ],
@@ -12,6 +12,7 @@ setup(
             'kwlfilecheck = kwltracking:get_file_list',
             'kwlfilecount = kwltracking:count_files',
             'kwlextracount = kwltracking:count_extra_files',
+            'sysgetassignment = tasktracking:get_assignment'
 
         ],
     },

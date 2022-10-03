@@ -1,16 +1,19 @@
 import requests
 import click
-
+from datetime import date as dt
 
 
 @click.command()
 @click.option('--type', 'assignment_type', default='prepare',
                 help='type can be prepare, review, or practice')
-@click.option('--date', default='2022-02-03')
+@click.option('--date', default=None)
 
 
 def get_assignment(date, assignment_type = 'prepare'):
-    base_url = 'https://raw.githubusercontent.com/introcompsys/spring2022/main/_'
+    if not(date):
+        date = dt.today().isoformat()
+
+    base_url = 'https://raw.githubusercontent.com/introcompsys/fall2022/main/_'
     path = base_url +assignment_type + '/' + date +'.md'
     click.echo( requests.get(path).text.replace('1. ','- [ ] '))
 

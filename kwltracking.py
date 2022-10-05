@@ -3,6 +3,8 @@ import numpy as np
 import os
 import click
 
+repo = 'http://introcompsys.github.io/spring2022/'
+
 @click.command()
 @click.option('--practice', default=False, is_flag=True,
                 help='flag formore practice related files or not')
@@ -17,7 +19,7 @@ def get_file_list(zone='graded', practice =False):
         types.append('practice')
 
     # click.echo('in program')
-    df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]
+    df = pd.read_html(repo + 'activities/kwl.html')[0]
     df_filt = filter_files(df,zone, types)
     click.echo(' '.join(df_filt['file'].to_list()))
 
@@ -42,7 +44,7 @@ def count_files(zone='graded',practice =False):
         types.append('practice')
 
     # click.echo('in program')
-    df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]
+    df = pd.read_html(repo + 'activities/kwl.html')[0]
     df_filt = filter_files(df,zone, types)
 
     # get files in the current directory and subfodlers, but not git

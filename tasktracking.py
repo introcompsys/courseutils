@@ -1,7 +1,7 @@
 import requests
 import click
 from datetime import date as dt
-
+from .config import base_url
 
 @click.command()
 @click.option('--type', 'assignment_type', default='prepare',
@@ -13,8 +13,6 @@ def get_assignment(date, assignment_type = 'prepare'):
 
     if not(date):
         date = dt.today().isoformat()
-
-    base_url = 'https://raw.githubusercontent.com/introcompsys/fall2022/main/_'
 
     md_activity = md_to_checklist(date, assignment_type)
     click.echo( md_activity)

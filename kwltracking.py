@@ -3,7 +3,7 @@ import numpy as np
 import os
 import click
 
-repo = 'http://introcompsys.github.io/spring2022/'
+from config import repo
 
 @click.command()
 @click.option('--practice', default=False, is_flag=True,

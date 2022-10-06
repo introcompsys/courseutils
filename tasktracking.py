@@ -10,20 +10,28 @@ from datetime import date as dt
 
 
 def get_assignment(date, assignment_type = 'prepare'):
+
     if not(date):
         date = dt.today().isoformat()
 
     base_url = 'https://raw.githubusercontent.com/introcompsys/fall2022/main/_'
+
+    md_activity = md_to_checklist(date, assignment_type)
+    click.echo( md_activity)
+
+def fetch_to_checklist(date, assignment_type = 'prepare'):
+    base_url = 'https://raw.githubusercontent.com/introcompsys/spring2022/main/_'
+
     path = base_url +assignment_type + '/' + date +'.md'
-    click.echo( requests.get(path).text.replace('1. ','- [ ] '))
+    return requests.get(path).text.replace('1. ','- [ ] ')
 
 def get_all(date):
     '''
     '''
     type_list = ['prepare','review','practice']
-
+    activities = []
     for assignment_type in type_list:
         try:
-            get_assignment(date,assignment_type)
+            activities.append(get_assignment(date,assignment_type))
         except:
             print('no ' + assignment_type + ' currently posted for this date')

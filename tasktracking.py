@@ -1,7 +1,16 @@
 import requests
 import click
 from datetime import date as dt
-from .config import base_url
+from datetime import timedelta
+import re
+base_url = 'https://raw.githubusercontent.com/introcompsys/fall2022/main/_'
+
+
+day_adj = {0:timedelta(days=0), 2:timedelta(days=0),
+            1:timedelta(days=1), 3:timedelta(days=1),
+            4:timedelta(days=2),5:timedelta(days=3),
+            6:timedelta(days=4)}
+
 
 @click.command()
 @click.option('--type', 'assignment_type', default='prepare',
@@ -12,16 +21,26 @@ from .config import base_url
 def get_assignment(date, assignment_type = 'prepare'):
 
     if not(date):
-        date = dt.today().isoformat()
+        today = dt.today()
+        last_class = today- day_adj[today.weekday()]
+        date = last_class.isoformat()
 
-    md_activity = md_to_checklist(date, assignment_type)
+
+    md_activity = fetch_to_checklist(date, assignment_type)
     click.echo( md_activity)
 
 def fetch_to_checklist(date, assignment_type = 'prepare'):
     base_url = 'https://raw.githubusercontent.com/introcompsys/spring2022/main/_'
 
-    path = base_url +assignment_type + '/' + date +'.md'
-    return requests.get(path).text.replace('1. ','- [ ] ')
+    try:
+        path = base_url +assignment_type + '/' + date +'.md'
+        check_list = requests.get(path).text.replace('1. ','- [ ] ')
+    except:
+        click.echo(date + "does not exist")
+        check_list = ""
+
+    # remove index items and return
+    return re.sub(r'\n```\{index\} (?P<file>.*\n)```','',check_list)
 
 def get_all(date):
     '''

@@ -3,14 +3,20 @@ import numpy as np
 import os
 import click
 
-from config import repo
+repo = 'http://introcompsys.github.io/fall2022/'
+
 
 @click.command()
 @click.option('--practice', default=False, is_flag=True,
                 help='flag formore practice related files or not')
 @click.option('--zone', default='graded')
 
-def get_file_list(zone='graded', practice =False):
+def get_file_list
+
+
+
+
+def get_file_list_df(zone='graded', practice =False):
     '''
     scrape the list, filter and echo back
     '''
@@ -24,7 +30,7 @@ def get_file_list(zone='graded', practice =False):
     click.echo(' '.join(df_filt['file'].to_list()))
 
 
-def filter_files(df,zone, types):
+def filter_files_df(df,zone, types):
     '''
     filter the dataframe based on a zone and type list
     '''

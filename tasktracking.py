@@ -25,19 +25,15 @@ def get_assignment(date, assignment_type = 'prepare'):
         last_class = today- day_adj[today.weekday()]
         date = last_class.isoformat()
 
-
+    
     md_activity = fetch_to_checklist(date, assignment_type)
     click.echo( md_activity)
 
 def fetch_to_checklist(date, assignment_type = 'prepare'):
-    base_url = 'https://raw.githubusercontent.com/introcompsys/spring2022/main/_'
 
-    try:
-        path = base_url +assignment_type + '/' + date +'.md'
-        check_list = requests.get(path).text.replace('1. ','- [ ] ')
-    except:
-        click.echo(date + "does not exist")
-        check_list = ""
+
+    path = base_url +assignment_type + '/' + date +'.md'
+    check_list = requests.get(path).text.replace('1. ','- [ ] ')
 
     # remove index items and return
     return re.sub(r'\n```\{index\} (?P<file>.*\n)```','',check_list)

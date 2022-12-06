@@ -39,7 +39,9 @@ Or give it the date and level
 sysgetassignment --date 2022-10-19 --type review
 ```
 
-### Get the list for use in a bash script (sp22 only)
+(this could be used with the gh CLI to make issues)
+
+### Get the list for use in a bash script
 
 use `kwlfilecheck` to get the list of files from that should be in the kwl repo.
 

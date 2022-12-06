@@ -5,22 +5,16 @@ import click
 
 repo = 'http://introcompsys.github.io/fall2022/'
 
-
 @click.command()
 @click.option('--practice', default=False, is_flag=True,
-                help='flag formore practice related files or not')
+                help='flag for more practice related files or not')
 @click.option('--zone', default='graded')
 
-def get_file_list
-
-
-
-
-def get_file_list_df(zone='graded', practice =False):
+def get_file_list(zone='graded', practice =False):
     '''
     scrape the list, filter and echo back
     '''
-    types = ['prepare']
+    types = ['prepare','review']
     if practice:
         types.append('practice')
 
@@ -30,12 +24,12 @@ def get_file_list_df(zone='graded', practice =False):
     click.echo(' '.join(df_filt['file'].to_list()))
 
 
-def filter_files_df(df,zone, types):
+def filter_files(df,zone, types):
     '''
     filter the dataframe based on a zone and type list
     '''
     zidx = df['zone'] ==zone
-    tidx = np.sum(np.asarray([df['type (prepare/practice)'].str.contains(typ)  for typ in types]),axis=0)>0
+    tidx = np.sum(np.asarray([df['type'].str.contains(typ)  for typ in types]),axis=0)>0
     return df[np.product([tidx,zidx],axis=0)==1]
 
 
@@ -45,7 +39,7 @@ def filter_files_df(df,zone, types):
 @click.option('--zone', default='graded')
 
 def count_files(zone='graded',practice =False):
-    types = ['prepare']
+    types = ['prepare','review']
     if practice:
         types.append('practice')
 
@@ -88,7 +82,7 @@ def count_extra_files():
     jb_files = ['_toc.yml','_config.yml','requirements.txt']
 
     # click.echo('in program')
-    df = pd.read_html('http://introcompsys.github.io/spring2022/activities/kwl.html')[0]
+    df = pd.read_html(repo + 'activities/kwl.html')[0]
     expected_files = set(df['file'].to_list() + jb_files)
 
     # get files in the current directory and subfodlers, but not git

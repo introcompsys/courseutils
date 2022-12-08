@@ -6,7 +6,7 @@ setup(
     py_modules=['kwltracking',
                 'tasktracking'],
     install_requires=[
-        'Click', 'pandas', 'lxml', 'numpy','requests'
+        'Click', 'pandas', 'lxml', 'numpy','requests','html5lib'
     ],
     entry_points={
         'console_scripts': [

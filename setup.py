@@ -2,9 +2,9 @@ from setuptools import setup
 
 setup(
     name='syscourseutils',
-    version='0.2.0',
+    version='0.1.0',
     py_modules=['kwltracking',
-                'tasktracking'],
+                'tasktracking','sitetools'],
     install_requires=[
         'Click', 'pandas', 'lxml', 'numpy','requests','html5lib'
     ],
@@ -13,8 +13,9 @@ setup(
             'kwlfilecheck = kwltracking:get_file_list',
             'kwlfilecount = kwltracking:count_files',
             'kwlextracount = kwltracking:count_extra_files',
-            'sysgetassignment = tasktracking:get_assignment'
-
+            'sysgetassignment = tasktracking:get_assignment',
+            'sysfmtassignment = tasktracking:fetch_to_checklist',
+            'kwlcsv = sitetools:get_kwl_files'
         ],
     },
 )

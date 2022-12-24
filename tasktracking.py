@@ -29,6 +29,9 @@ def get_assignment(date, assignment_type = 'prepare'):
     md_activity = fetch_to_checklist(date, assignment_type)
     click.echo( md_activity)
 
+
+
+
 def fetch_to_checklist(date, assignment_type = 'prepare'):
 
 
@@ -38,6 +41,11 @@ def fetch_to_checklist(date, assignment_type = 'prepare'):
     # remove index items and return
     return re.sub(r'\n```\{index\} (?P<file>.*\n)```','',check_list)
 
+
+@click.command()
+@click.option('--type', 'assignment_type', default='prepare',
+                help='type can be prepare, review, or practice')
+@click.option('--date', default=None)
 def get_all(date):
     '''
     '''

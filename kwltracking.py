@@ -39,6 +39,16 @@ def filter_files(df,zone, types):
 @click.option('--zone', default='graded')
 
 def count_files(zone='graded',practice =False):
+    '''
+    get the file list, count per type by date, produce a status report 
+
+    Parameters
+    ----------
+    zone : string {graded}
+        graded or gradefree zone 
+    practice : boolean {False}
+        include more practice tasks or not
+    '''
     types = ['prepare','review']
     if practice:
         types.append('practice')

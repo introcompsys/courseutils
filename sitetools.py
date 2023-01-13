@@ -18,10 +18,12 @@ def get_kwl_files(tldpath = '.'):
     activity_types = ['review','prepare','practice']
 
     all_file_df_list = []
+    # iterate types 
     for ac_type in activity_types:
         ac_dir = '_'+ac_type
         ac_files = os.listdir(os.path.join(tldpath,ac_dir))
 
+        # iterate dates within type
         for datefile in ac_files:
             date = datefile[:-3]
 

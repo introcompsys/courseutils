@@ -8,3 +8,4 @@ myst-nb
 myst-parser
 seaborn
 sphinx-click
+sphinx-panels

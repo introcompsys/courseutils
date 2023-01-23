@@ -1,6 +1,8 @@
 # courseutils
 helper code for class
 
+If you are trying to use this while finishing an incomplete, use the correct release. 
+
 ## To install:
 
 ```

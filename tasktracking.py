@@ -3,7 +3,7 @@ import click
 from datetime import date as dt
 from datetime import timedelta
 import re
-base_url = 'https://raw.githubusercontent.com/introcompsys/fall2022/main/_'
+base_url = 'https://raw.githubusercontent.com/introcompsys/spring2023/main/_'
 
 
 day_adj = {0:timedelta(days=0), 2:timedelta(days=0),
@@ -36,7 +36,9 @@ def fetch_to_checklist(date, assignment_type = 'prepare'):
 
 
     path = base_url +assignment_type + '/' + date +'.md'
-    check_list = requests.get(path).text.replace('1. ','- [ ] ')
+    # get and convert to checklist from enumerated
+    fetched_instructions = requests.get(path).text
+    check_list = re.sub('[0-9]\. ', '- [ ] ', fetched_instructions)
 
     # remove index items and return
     return re.sub(r'\n```\{index\} (?P<file>.*\n)```','',check_list)

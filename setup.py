@@ -15,7 +15,7 @@ setup(
             'kwlextracount = kwltracking:count_extra_files',
             'sysgetassignment = tasktracking:get_assignment',
             'sysfmtassignment = tasktracking:fetch_to_checklist',
-            'kwlcsv = sitetools:get_kwl_files'
+            'kwlcsv = sitetools:kwl_csv'
         ],
     },
 )

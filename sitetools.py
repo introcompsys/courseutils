@@ -6,9 +6,9 @@ import re
 @click.command()
 @click.argument(tldpath,)
 
-def get_kwl_files(tldpath = '.'):
+def kwl_csv(tldpath = '.'):
     '''
-    from a local version of the site, generate the activity file csv file
+    from a local version of the site, generate the activity file csv file for the site building
 
     Parameters
     ----------

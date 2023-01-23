@@ -10,6 +10,9 @@ def verify_badge(badge_name,approver,signature):
     # create expected message
     badge_bytes = b(badge_name) # bytes type
 
+    # convert signature
+    signature_bytes = bytes.fromhex(signature)
+
     # read public key for the approver
     # TODO: fix this to read from installed package data
     # TODO: make install save the file 
@@ -18,7 +21,7 @@ def verify_badge(badge_name,approver,signature):
 
     signer_key = Ed25519PublicKey.from_public_bytes(public_bytes)
     # Raises InvalidSignature if verification fails
-    signer_key.verify(signature, badge_bytes)
+    signer_key.verify(signature_bytes, badge_bytes)
 
 
 @click.command()

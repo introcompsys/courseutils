@@ -3,7 +3,7 @@ import numpy as np
 import os
 import click
 
-repo = 'http://introcompsys.github.io/fall2022/'
+repo = 'http://introcompsys.github.io/spring2023/'
 
 @click.command()
 @click.option('--practice', default=False, is_flag=True,

@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Computer Systems and Programming Tools courseutils'
-copyright = '2022, Sarah M Brown'
+copyright = '2023, Sarah M Brown'
 author = 'Sarah M Brown '
 
 

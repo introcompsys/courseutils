@@ -9,3 +9,4 @@ myst-parser
 seaborn
 sphinx-click
 sphinx-panels
+pydata_sphinx_theme

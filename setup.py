@@ -2,9 +2,8 @@ from setuptools import setup
 
 setup(
     name='syscourseutils',
-    version='0.1.0',
-    py_modules=['kwltracking',
-                'tasktracking','sitetools'],
+    version='0.3.0',
+    py_modules=['kwltracking','tasktracking','sitetools','badges'],
     install_requires=[
         'Click', 'pandas', 'lxml', 'numpy','requests','html5lib'
     ],
@@ -15,7 +14,9 @@ setup(
             'kwlextracount = kwltracking:count_extra_files',
             'sysgetassignment = tasktracking:get_assignment',
             'sysfmtassignment = tasktracking:fetch_to_checklist',
-            'kwlcsv = sitetools:kwl_csv'
+            'kwlcsv = sitetools:kwl_csv',
+            'verifybadge = badges:verify_badge',
+            'verifyjson = badges:process_badges'
         ],
     },
 )

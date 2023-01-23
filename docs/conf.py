@@ -20,7 +20,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     "sphinx_panels",
     'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    'sphinx_click'
 ]
 
 # "sphinxext.rediraffe",
@@ -48,7 +49,6 @@ html_theme = 'pydata_sphinx_theme'
 html_theme_options = {
   "search_bar_text": "Search this site...",
   "navbar_end": ["search-field.html"],
-  "left_sidebar_end":[ "icon-links.html"]
 }
 
 # html_favicon = "_static/favicon.ico"

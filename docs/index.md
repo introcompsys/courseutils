@@ -6,14 +6,7 @@
 # Welcome to Computer Systems and Programming Tools courseutils's documentation!
 
 
-```{toctree}
-
-   :caption: Contents:
-   :maxdepth: 2
-
-```
-
-## Basic use
+## Setup
 
 
 ```
@@ -21,7 +14,11 @@ git clone https://github.com/introcompsys/courseutils.git
 pip install courseutils
 ```
 
+## Get Assignments
+
+
 ### Check KWL files
+This one should not be necessary for Spring 2023 
 
 ```
 Usage: kwlfilecheck [OPTIONS]
@@ -32,6 +29,14 @@ Options:
   --practice   flag for more practice related files or not
   --zone TEXT
   --help       Show this message and exit.
+```
+
+```{toctree}
+:caption: Contents
+:maxdepth: 2
+
+tasktracking.md
+standing.md
 ```
 
 <!-- 

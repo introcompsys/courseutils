@@ -4,11 +4,11 @@ import pandas as pd
 import re
 
 @click.command()
-@click.argument(tldpath,)
+@click.argument('tldpath')
 
 def kwl_csv(tldpath = '.'):
     '''
-    from a local version of the site, generate the activity file csv file for the site building
+    generate the activity file csv file for the site building from site located at the TLDPATH
 
     Parameters
     ----------

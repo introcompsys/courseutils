@@ -1,14 +1,18 @@
 import click 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+import json
 
 @click.command() 
+@click.option('-b','--badge-name',help="name of the badge formated like type.YYYY-MM-DD")
+@click.option('-a','--approver',help='github username of the badge issuer')
+@click.option('-s','--signature',help = "the signature hash to be checked")
 
 def verify_badge(badge_name,approver,signature):
     '''
     check that file path/name matches included key
     '''
     # create expected message
-    badge_bytes = b(badge_name) # bytes type
+    badge_bytes = badge_name.encode('utf-8')  # bytes type
 
     # convert signature
     signature_bytes = bytes.fromhex(signature)
@@ -16,34 +20,71 @@ def verify_badge(badge_name,approver,signature):
     # read public key for the approver
     # TODO: fix this to read from installed package data
     # TODO: make install save the file 
-    with open(approver,'b') as f:
+    with open(approver,'rb') as f:
         public_bytes = f.read() # read file
 
     signer_key = Ed25519PublicKey.from_public_bytes(public_bytes)
     # Raises InvalidSignature if verification fails
     signer_key.verify(signature_bytes, badge_bytes)
 
+    click.echo(badge_name + ' Verified')
+    
+
 
 @click.command()
+@click.option('-j','--json-output',default='badges.json',type=click.File('r')
+                help='json file to parse')
+@click.option('-f','--file-out',default=None,type=click.File('w'),
+                help='to write to a file, otherwise will echo')
 
-def collect_pr_badges(json_output):
+def process_badges(json_output,file_out = None):
     '''
     process gh cli json
     '''
     # parse json 
+    badges_df = pd.read_json(json_output)
 
-    # extract title, latestReviews.author.login, latestReviews.body, latestReviews.state
-
-    # filter to only process approved ones 
+    with open('badges.json', 'r') as f:
+        PR_list = json.load(f)
+     
+    #filter for ones with reviews
+    reviewed = [(pr['title'], pr['latestReviews'][0])
+                for pr in PR_list if pr['latestReviews']]
+    # filter to only process approved ones latestReviews.state
+    # extract title, latestReviews.author.login, latestReviews.body, 
+    logged_badges = [(title,review['author']['login'], review['body'])
+                for title,review in reviewed if review['state'] == 'APPROVED']
 
     # iterate approved
-
+    verified_badges = []
+    questioned_badges = []
+    for title, reviewer, body in logged_badges:
+        signature = [s for s in body.split(' ') if len(s)==128]
         # verify 
+        try:
+            verify_badge(title, reviewer, signature)
+            verified_badges.append(title)
+        except InvalidSignature:
+            questioned_badges.append(title)
 
-        # add to log file 
 
+    # add to log 
+    report = "verified badges:\n" 
+    report += '\n -' + '\n -'.join(verified_badges)
+    if questioned_badges:
+        report += '\n\nquestioned badges: \n'
+        report += '\n -' + '\n -'.join(questioned_badges)
+
+    if file_out:
+        with open(file_out,'w') as f:
+            f.write()
+    else: 
+        click.echo(report)
     #  TODO: pair this with a commit to a "badges" branch, so it doesn't create conflicts
 
+
+    # review_df = badges_df['latestReviews'].apply(pd.Series)[0].apply(pd.Series)
+    # author = review_df['author'].apply(pd.Series)
 
 
 # 

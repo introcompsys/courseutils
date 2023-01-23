@@ -14,22 +14,7 @@ git clone https://github.com/introcompsys/courseutils.git
 pip install courseutils
 ```
 
-## Get Assignments
-
-
-### Check KWL files
-This one should not be necessary for Spring 2023 
-
-```
-Usage: kwlfilecheck [OPTIONS]
-
-  scrape the list, filter and echo back
-
-Options:
-  --practice   flag for more practice related files or not
-  --zone TEXT
-  --help       Show this message and exit.
-```
+## Usage 
 
 ```{toctree}
 :caption: Contents

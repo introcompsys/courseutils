@@ -2,6 +2,7 @@ import click
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 from cryptography.exceptions import InvalidSignature
 import json
+import pkg_resources as pkgrs
 
 @click.command() 
 @click.option('-b','--badge-name',help="name of the badge formated like type.YYYY-MM-DD")
@@ -21,7 +22,9 @@ def verify_badge(badge_name,approver,signature):
     # read public key for the approver
     # TODO: fix this to read from installed package data
     # TODO: make install save the file 
-    with open(approver,'rb') as f:
+    approver_rel = os.path.join('signatures', approver)
+    approver_key_file = pkgrs.resource_filename(__name__,approver_rel)
+    with open(approver_key_file, 'rb') as f:
         public_bytes = f.read() # read file
 
     signer_key = Ed25519PublicKey.from_public_bytes(public_bytes)

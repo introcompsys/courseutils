@@ -40,7 +40,6 @@ def parse_date(passed_date):
 @click.option('--date', default=None,
                 help='date should be YYYY-MM-DD of the tasks you want')
 
-
 def get_assignment(date, assignment_type = 'prepare'):
 
     if not(date):
@@ -54,11 +53,11 @@ def get_assignment(date, assignment_type = 'prepare'):
 
 
 
-@ click.command()
-@click.option('--type', 'assignment_type', default='prepare',
-              help='type can be prepare, review, or practice')
-@click.option('--date', default=None,
-              help='date should be YYYY-MM-DD of the tasks you want and must be valid')
+# @ click.command()
+# @click.option('--type', 'assignment_type', default='prepare',
+#               help='type can be prepare, review, or practice')
+# @click.option('--date', default=None,
+#               help='date should be YYYY-MM-DD of the tasks you want and must be valid')
 
 def fetch_to_checklist(date, assignment_type = 'prepare'):
 

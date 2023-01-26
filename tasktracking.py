@@ -18,6 +18,21 @@ day_adj_TTh = {1: timedelta(days=0), 3: timedelta(days=0),
 
 day_adj = day_adj_TTh
 
+@click.command()
+@click.argument('passed_date')
+
+def parse_date(passed_date):
+    '''
+    process select non dates
+    '''
+    passed_date_clean = passed_date.strip().lower()
+
+    if passed_date_clean == "today":
+        click.echo(dt.today().isoformat())
+    else:
+        click.echo(passed_date_clean)
+
+
 
 @click.command()
 @click.option('--type', 'assignment_type', default='prepare',

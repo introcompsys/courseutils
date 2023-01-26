@@ -16,7 +16,8 @@ setup(
             'sysfmtassignment = tasktracking:fetch_to_checklist',
             'kwlcsv = sitetools:kwl_csv',
             'verifybadge = badges:verify_badge',
-            'verifyjson = badges:process_badges'
+            'verifyjson = badges:process_badges',
+            'cleandate = tasktracking:parse_date'
         ],
     },
 )

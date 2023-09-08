@@ -14,6 +14,7 @@ setup(
             'kwlextracount = kwltracking:count_extra_files',
             'sysgetassignment = tasktracking:get_assignment',
             'sysfmtassignment = tasktracking:fetch_to_checklist',
+            'sysgetbadgedate = tasktracking:get_badge_date',
             'kwlcsv = sitetools:kwl_csv',
             'verifybadge = badges:verify_badge',
             'verifyjson = badges:process_badges',

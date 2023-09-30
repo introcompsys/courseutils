@@ -8,9 +8,13 @@ import json
 @click.option('-a','--approver',help='github username of the badge issuer')
 @click.option('-s','--signature',help = "the signature hash to be checked")
 
+
 def verify_badge(badge_name,approver,signature):
     '''
     check that file path/name matches included key
+
+    .. deprecated:: 23.09
+        receipts are no longer in use
     '''
     # create expected message
     badge_bytes = badge_name.encode('utf-8')  # bytes type
@@ -41,6 +45,10 @@ def verify_badge(badge_name,approver,signature):
 def process_badges(json_output,file_out = None):
     '''
     process gh cli json
+
+    .. deprecated:: 23.09
+        receipts are no longer in use
+        this may be a valid starting point or useful reference for different processing though
     '''
     
     with open(json_output, 'r') as f:

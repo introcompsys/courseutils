@@ -149,6 +149,15 @@ def get_assignment(date, assignment_type = 'prepare'):
 #               help='date should be YYYY-MM-DD of the tasks you want and must be valid')
 
 def fetch_to_checklist(date, assignment_type = 'prepare'):
+    '''
+    get assignment text and change numbered items to a checklist
+
+    Parameters
+    ----------
+    date : string
+        YYYY-MM-DD formatted strings of the date to get
+    assignment_type :
+    '''
 
 
     path = base_url +assignment_type + '/' + date +'.md'

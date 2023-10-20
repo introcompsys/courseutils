@@ -31,7 +31,7 @@ This is a command line tool. It works in Bash on MacOS and Linux and Anaconda Pr
 It will also work in a code space with 
 
 ```
-
+pip install git+https://github.com/introcompsys/courseutils
 ```
 
 ### Get tasks to do

@@ -1,9 +1,9 @@
 import click 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 from cryptography.exceptions import InvalidSignature
-from .config import gh_approvers
 import json
 
+gh_approvers = ['brownsarahm','ascott20','marcinpawlukiewicz']
 
 badge_types = ['review', 'practice', 'explore', 'experience', 
                'build', 'lab','community']
@@ -102,12 +102,22 @@ def process_badges(json_output,file_out = None):
 
 
 @click.command()
-@click.option('-j','--json-output',default='badges.json',type=click.File('r'),
-                help='json file to parse')
+@click.argument('json-output')
 @click.option('-f','--file-out',default=None,type=click.File('w'),
-                help='to write to a file, otherwise will echo')
+                help='to write to a file, otherwise will use stdout')
+def cli_get_approved_titles(json_output,file_out = None):
+    '''
+    list PR titles from json or - to use std in  that have been approved by an official approver 
+    
+    gh pr list -s all --json title,latestReviews
+      
+     
+    '''
 
-def get_approved_titles(json_output,file_out = None):
+    get_approved_titles(json_output,file_out)
+
+
+def get_approved_titles(json_output, file_out = None):
     '''
     process gh cli json
 

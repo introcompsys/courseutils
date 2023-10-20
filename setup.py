@@ -18,6 +18,7 @@ setup(
             'kwlcsv = sitetools:kwl_csv',
             'verifybadge = badges:verify_badge',
             'verifyjson = badges:process_badges',
+            'sysapprovedbadges = badges:cli_get_approved_titles',
             'cleandate = tasktracking:parse_date'
         ],
     },

@@ -28,6 +28,12 @@ On Windows, use GitBash for the clone and then Anaconda Prompt for install
 
 This is a command line tool. It works in Bash on MacOS and Linux and Anaconda Prompt on Windows.
 
+It will also work in a code space with 
+
+```
+
+```
+
 ### Get tasks to do
 
 Get prepare for the most recent date (what's current)
@@ -43,6 +49,16 @@ sysgetassignment --date 2022-10-19 --type review
 
 (this could be used with the gh CLI to make issues)
 
+## Check badges 
+
+```
+gh pr list -s all --json title,latestReviews > badges.json
+sysapprovedbadges badges.json
+```
+
+**ignore the badges.json file**
+
+<!-- 
 ### Get the list for use in a bash script
 
 use `kwlfilecheck` to get the list of files from that should be in the kwl repo.
@@ -66,4 +82,4 @@ Usage: kwlfilecount [OPTIONS]
 Options:
 - `--practice`   flag formore practice related files or not
 -  `--zone TEXT`
--  `--help`       Show this message and exit.
+-  `--help`       Show this message and exit. -->

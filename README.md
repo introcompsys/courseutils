@@ -52,7 +52,7 @@ sysgetassignment --date 2022-10-19 --type review
 ## Check badges 
 
 ```
-gh pr list -s all --json title,latestReviews > badges.json
+gh pr list -s all --json title,reviews > badges.json
 sysapprovedbadges badges.json
 ```
 

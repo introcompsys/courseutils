@@ -102,8 +102,8 @@ def process_badges(json_output,file_out = None):
 
 
 @click.command()
-@click.argument('json-output')
-@click.option('-f','--file-out',default=None,type=click.File('w'),
+@click.argument('json-output', type =click.Path(exists=True))
+@click.option('-f','--file-out',default=None,
                 help='to write to a file, otherwise will use stdout')
 def cli_get_approved_titles(json_output,file_out = None):
     '''
@@ -141,23 +141,26 @@ def get_approved_titles(json_output, file_out = None):
                     if review['state'] == 'APPROVED' and 
                     review['author']['login']in gh_approvers]
     
-    out_list = '\n'.join(logged_badges)
+    
 
     if file_out: 
-        titles_by_type = {bt:[t for t in logged_badges if type in t.lower()] 
+        titles_by_type = {bt:[t for t in logged_badges if bt in t.lower()] 
                           for bt in badge_types}
-        verified_by_type = '\n'.join(['## '+bt + ' ('+str(len(bl)) +')' +'\n - '+'\n - '. join(bl) 
-                        for bt,bl in titles_by_type.items()])
+        verified_by_type = '\n' +  '\n'.join(['\n## '+bt + ' ('+str(len(bl)) +')' +'\n- '+'\n- '. join(bl) 
+                        for bt,bl in titles_by_type.items() if len(bl)>0 ])
         valid_badges = [vi for v in titles_by_type.values() for vi in v]
-        not_typed = [p for p in logged_badges if not(p in valid_badges)]
+        not_typed = [p for p in logged_badges if not(p in valid_badges) ]
         with open(file_out,'w') as f:
-            f.write('## all approved ')
-            f.write(out_list)
+            f.write('## all approved \n\n')
+            f.write('- ' + '\n- '.join(logged_badges))
             f.write(verified_by_type)
-            f.write('## Cannot match as a typed badge')
-            f.write('\n- ' + '\n - '.join(not_typed))
+
+            if len(not_typed) >0 :
+                f.write('\n\n## Approved, not badges')
+                f.write('\n- ' + '\n - '.join(not_typed))
+                f.write('\n')
     else: 
-        click.echo(out_list)
+        click.echo('\n'.join(logged_badges))
 
 block_template = '''
 # {type}

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='syscourseutils',
-    version='0.3.0',
+    version='0.4.0',
     py_modules=['kwltracking','tasktracking','sitetools','badges'],
     install_requires=[
         'Click', 'pandas', 'lxml', 'numpy','requests','html5lib'

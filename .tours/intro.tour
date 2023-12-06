@@ -1,0 +1,16 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Intro",
+  "steps": [
+    {
+      "file": "setup.py",
+      "description": "this list includes all of the CLI commands that the package provides. ",
+      "line": 11
+    },
+    {
+      "file": "setup.py",
+      "description": "For example, this one makes it so that the command `sysgetassigment` calls the `get_assignment` function in the `tasktracking.py` file. ",
+      "line": 15
+    }
+  ]
+}

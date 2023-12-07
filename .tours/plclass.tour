@@ -1,0 +1,46 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "plclass",
+  "steps": [
+    {
+      "title": "Create a file",
+      "description": "in your experiences folder, create a file called `2023-12-07.md`"
+    },
+    {
+      "title": "Title your file",
+      "file": "experiences/2023-12-07.md",
+      "description": "Add a title to the file as a markdown H1.  We'll be learning about programming languages today. ",
+      "line": 1
+    },
+    {
+      "title": "Warm up exercise based on prior knowledge of PL",
+      "file": "experiences/2023-12-07.md",
+      "description": "Create a section using the following excerpt, there should be an \"insert code\" button below the block to help you. \n\n```markdown\n## Language Comparison\n\nFill in the following table for two languages of your own. Replace the `<langugage>` with two languages that you are familiar with. You can do this by memory, or by looking up/discussing with class mates. If you look things up, be sure to use reputable sources and link to them below the table. \n\n| feature | <language1> | <language2> |\n| ------- | ---------- | ---------- |\n| use of whitespace     | lang1 use     | lang 2 use     |\n| list/array types |   |  |\n| variable typing |   |  | \n| memory usage |   |   | \n```\n",
+      "line": 3
+    },
+    {
+      "title": "Extend the warmup",
+      "file": "experiences/2023-12-07.md",
+      "description": "add two more rows to your table. ",
+      "line": 13
+    },
+    {
+      "title": "Why study PL?",
+      "file": "experiences/2023-12-07.md",
+      "description": "Take notes on the discussion about why we study programming languages as a topic, not only studying individual languages under a heading: \n```markdown\n## What is the study of programming languages?\n```",
+      "line": 15
+    },
+    {
+      "title": "Developer Survey discussion",
+      "file": "experiences/2023-12-07.md",
+      "description": "Next, we'll discuss the Stackoverflow Developer Survey.  Add the template below \n\n```markdown\n## PL in Developer Survey\n\nReview and discuss the [developer survey// languages section](https://insights.stackoverflow.com/survey)\nfor  2023.  \n\nBased on the discussion and collaboration with peers include bulleted points with sources to back up your points for each of the following. \n\n### Surprises/non-surprises\n\n\n### Popular Language features\n\n\n### Dreaded Language features\n\n\n### Changes in language use\n\n\n\n```",
+      "line": 30
+    },
+    {
+      "title": "Experience Badge",
+      "file": "experiences/2023-12-07.md",
+      "description": "Complete your experience reflection. \n\nSee prismia for a community badge opportunity. \n\n```markdown\n## Experience Reflection\n\n\n### I want to remember\n<!--  this can be a single phrase or a short list, use hyphens with a space before the text to create bullets -->\n\n### One Question I have \n<!--  this can be clarifying or something you want to know more about -->\n\n```",
+      "line": 70
+    }
+  ]
+}

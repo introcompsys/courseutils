@@ -1,14 +1,18 @@
 import requests
 import click
 from datetime import date as dt
+from datetime import datetime as dtt
 from datetime import timedelta
 import re
 # UPDATE: update this each semester
-base_url = 'https://raw.githubusercontent.com/introcompsys/fall2023/main/_'
+base_url = 'https://raw.githubusercontent.com/compsys-progtools/spring2024/main/_'
 
-cur_days_off = [(dt(2023,11,23),dt(2023,11,26)),
-                    (dt(2023,11,13)),
-                  (dt(2023,10,10))]
+cur_days_off = [(date(2024,3,10),date(2024,3,16)),
+                    (date(2024,2,19))]
+
+# [(dt(2023,11,23),dt(2023,11,26)),
+                    # (dt(2023,11,13)),
+                #   (dt(2023,10,10))]
 
 # MW 
 day_adj_MW = {0:timedelta(days=0), 2:timedelta(days=0),
@@ -66,6 +70,11 @@ def calculate_badge_date(assignment_type,today=None):
     '''
     if not(today):
         today = dt.today()
+
+        # if auto in the morning use past
+        if dtt.today().hour < 12:
+            today -= timedelta(days=1)
+
     last_class = today- day_adj[today.weekday()]
     # 
     if assignment_type =='prepare':

@@ -7,8 +7,8 @@ import re
 # UPDATE: update this each semester
 base_url = 'https://raw.githubusercontent.com/compsys-progtools/spring2024/main/_'
 
-cur_days_off = [(date(2024,3,10),date(2024,3,16)),
-                    (date(2024,2,19))]
+cur_days_off = [(dt(2024,3,10),dt(2024,3,16)),
+                    (dt(2024,2,19))]
 
 # [(dt(2023,11,23),dt(2023,11,26)),
                     # (dt(2023,11,13)),

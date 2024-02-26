@@ -22,4 +22,7 @@ setup(
             'cleandate = tasktracking:parse_date'
         ],
     },
+
+    zip_safe=False,
+    include_package_data=True,
 )

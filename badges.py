@@ -61,10 +61,10 @@ def process_badges(json_output,file_out = None):
         PR_list = json.load(f)
      
     #filter for ones with reviews
-    reviewed = [(pr['title'], pr['latestReviews'][0])
-                for pr in PR_list if pr['latestReviews']]
-    # filter to only process approved ones latestReviews.state
-    # extract title, latestReviews.author.login, latestReviews.body, 
+    reviewed = [(pr['title'], pr['reviews'][0])
+                for pr in PR_list if pr['reviews']]
+    # filter to only process approved ones reviews.state
+    # extract title, reviews.author.login, reviews.body, 
     logged_badges = [(title,review['author']['login'], review['body'])
                 for title,review in reviewed if review['state'] == 'APPROVED']
 
@@ -96,7 +96,7 @@ def process_badges(json_output,file_out = None):
     #  TODO: pair this with a commit to a "badges" branch, so it doesn't create conflicts
 
 
-    # review_df = badges_df['latestReviews'].apply(pd.Series)[0].apply(pd.Series)
+    # review_df = badges_df['reviews'].apply(pd.Series)[0].apply(pd.Series)
     # author = review_df['author'].apply(pd.Series)
 
 
@@ -109,7 +109,7 @@ def cli_get_approved_titles(json_output,file_out = None):
     '''
     list PR titles from json or - to use std in  that have been approved by an official approver 
     
-    gh pr list -s all --json title,latestReviews
+    gh pr list -s all --json title,reviews
       
      
     '''
@@ -124,7 +124,7 @@ def get_approved_titles(json_output, file_out = None):
     Parameters
     ----------
     json_output : filename
-        file generated from `gh pr list -s all --json title,latestReviews `
+        file generated from `gh pr list -s all --json title,reviews `
     file_out : file name
         file to be generated and store the output
     '''
@@ -133,10 +133,10 @@ def get_approved_titles(json_output, file_out = None):
         PR_list = json.load(f)
         
     #filter for ones with reviews
-    reviewed = [(pr['title'], pr['latestReviews'][0])
-                for pr in PR_list if pr['latestReviews']]
-    # filter to only process approved ones latestReviews.state
-    # extract title, latestReviews.author.login, latestReviews.body, 
+    reviewed = [(pr['title'], pr['reviews'][0])
+                for pr in PR_list if pr['reviews']]
+    # filter to only process approved ones reviews.state
+    # extract title, reviews.author.login, reviews.body, 
     logged_badges = [title for title,review in reviewed 
                     if review['state'] == 'APPROVED' and 
                     review['author']['login']in gh_approvers]
@@ -193,5 +193,5 @@ block_template = '''
 #     runs-on: ubuntu-latest
 #     steps:
 #     - run: |
-#         gh pr list --state all --json title,latestReviews >>tmp
+#         gh pr list --state all --json title,reviews >>tmp
         # process json to extract badges
